@@ -11,7 +11,7 @@ export class ListadoGeneralComponent {
     "name": "Bolsa reutilizable",
     "price": 4000,
     "stock": 3,
-    "image": "./assets/img/bolsa.png"
+    "image": "assets/bolsa.png"
   }
 
 }
