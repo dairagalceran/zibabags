@@ -8,19 +8,32 @@
       <th scope="col">Stock</th>
     </tr>
   </thead>
+
+  <!-- TEMPLATE todo lo que tiene que ver con la visual pero no a la lógica de la aplicación -->
   <tbody>
-    <tr>
-      <th><img [src]="categoria.image" [alt]="categoria.name"/></th>
-      <td>{{categoria.name}}</td>
-      <td>{{categoria.price}}</td>
-      <td>{{categoria.stock}}</td>
-    </tr>
-    <tr>
-      <th></th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>6</td>
-    </tr>
-    <tr>
+    @for(categoria  of categorias; track categoria.image){
+      <tr >
+        <td><img [src]="categoria.image" [alt]="categoria.name"/></td>
+        <td [ngClass]="{'clearence': categoria.clearence , 'resaltar': categoria.clearence}">{{categoria.name | uppercase}}</td>
+        <td>{{categoria.price | currency}}</td>
+        @if(categoria.stock > 0){
+          <td>{{categoria.stock}}</td>
+        }@else {
+          <td><span class="badge text-bg-secondary">SIN STOCK</span> </td>
+        }
+      </tr>
+    }
   </tbody>
 </table>
+
+<!-- DIRECTIVAS ESTRUCTURALES
+    <tr *ngFor="let categoria of categorias" >
+    <td *ngIf="categoria.stock == 0" > SIN STOCK </td>
+
+    DIRECTIVAS ATRIBUTO
+    [ngClass]="{'clearence': categoria.clearence}"  maneja las clases CSS sepuede agregar o sacar una clase
+      esta se  arma  objeto JSON {'nombrePropiedad' : nombreClase.claseCSSAAplicar}
+
+    PIPE
+    se agregan despues del símbolo | (pipe) a la variable {{ ... | currency}} se interpola pipeCurrency
+  -->
