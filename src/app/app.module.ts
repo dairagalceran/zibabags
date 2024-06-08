@@ -3,14 +3,18 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListadoGeneralComponent } from './listado-general/listado-general.component';
 import { CarritoCompraComponent } from './carrito-compra/carrito-compra.component';
+import { HeaderComponent } from './components/header/header.component';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListadoGeneralComponent,
-    CarritoCompraComponent   // declarar todos los componentes a usar
+    CarritoCompraComponent,
+    HeaderComponent,
+    CategoriesComponent,
+    FooterComponent   // declarar todos los componentes a usar
   ],
   imports: [
     BrowserModule,

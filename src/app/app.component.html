@@ -1,24 +1,8 @@
 <!--Acá desarrollamos el esqueleto de la aplicación-->
 
 <div class="container">
-  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-    <div class="col-md-3 mb-2 mb-md-0">
-      <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-        <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-        {{title}}
-      </a>
-    </div>
-
-    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li><a href="#" class="nav-link px-2 link-dark">{{title}}</a></li>
-      <li><a href="#" class="nav-link px-2 link-secondary">Nosotros</a></li>
-      <li><a href="#" class="nav-link px-2 link-secondary">Contacto</a></li>
-    </ul>
-
-    <div class="col-md-3 text-end">
-      <button type="button" class="btn btn-outline-secondary me-2">Login</button>
-      <button type="button" class="btn btn-secondary">Sign-up</button>
-    </div>
+  <header>
+    <app-header></app-header>
   </header>
 </div>
 
@@ -27,7 +11,7 @@
 <div class="container">
   <div class="row">
     <div class="col-10">
-      <app-listado-general></app-listado-general>
+      <app-categories></app-categories>
     </div>
     <div class="col-2">
       <app-carrito-compra></app-carrito-compra>
@@ -36,80 +20,6 @@
 </div>
 
 
-
-<footer class="text-center text-white" style="background-color: #f1f1f1;">
-  <!-- Grid container -->
-  <div class="container pt-4">
-    <!-- Section: Social media -->
-    <section class="mb-4">
-      <!-- Facebook -->
-      <a
-        class="btn btn-link btn-floating btn-lg text-dark m-1"
-        href="#!"
-        role="button"
-        style="background-color: rgba(0, 0, 0, 0.2);"
-        data-mdb-ripple-color="dark"
-        ><i class="fab fa-facebook-f"></i
-      ></a>
-
-      <!-- Twitter -->
-      <a
-        class="btn btn-link  btn-floating btn-lg text-dark m-1"
-        href="#!"
-        role="button"
-        style="background-color: rgba(0, 0, 0, 0.2);"
-        data-mdb-ripple-color="dark"
-        ><i class="fab fa-twitter"></i
-      ></a>
-
-      <!-- Google -->
-      <a
-        class="btn btn-link  btn-floating btn-lg text-dark m-1"
-        href="#!"
-        role="button"
-        style="background-color: rgba(0, 0, 0, 0.2);"
-        data-mdb-ripple-color="dark"
-        ><i class="fab fa-google"></i
-      ></a>
-
-      <!-- Instagram -->
-      <a
-        class="btn btn-link btn-floating btn-lg text-dark m-1"
-        href="#!"
-        role="button"
-        style="background-color: rgba(0, 0, 0, 0.2);"
-        data-mdb-ripple-color="dark"
-        ><i class="fab fa-instagram"></i
-      ></a>
-
-      <!-- Linkedin -->
-      <a
-        class="btn btn-link btn-floating btn-lg text-dark m-1"
-        href="#!"
-        role="button"
-        style="background-color: rgba(0, 0, 0, 0.2);"
-        data-mdb-ripple-color="dark"
-        ><i class="fab fa-linkedin"></i
-      ></a>
-      <!-- Github -->
-      <a
-        class="btn btn-link btn-floating btn-lg text-dark m-1"
-        href="#!"
-        style="background-color: rgba(0, 0, 0, 0.2);"
-        role="button"
-        data-mdb-ripple-color="dark"
-        ><i class="fab fa-github"></i
-      ></a>
-    </section>
-    <!-- Section: Social media -->
-  </div>
-  <!-- Grid container -->
-
-  <!-- Copyright -->
-  <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2020 Copyright:
-    <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-  </div>
-  <!-- Copyright -->
-</footer>
-
+<div>
+  <app-footer></app-footer>
+</div>

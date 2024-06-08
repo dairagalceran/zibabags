@@ -11,7 +11,7 @@
 
   <!-- TEMPLATE todo lo que tiene que ver con la visual pero no a la lógica de la aplicación -->
   <tbody>
-    @for(categoria  of categorias; track categoria.image){
+    @for(categoria  of categorias; track categoria.id){
       <tr >
         <td><img [src]="categoria.image" [alt]="categoria.name"/></td>
         <td [ngClass]="{'clearence': categoria.clearence , 'resaltar': categoria.clearence}">{{categoria.name | uppercase}}</td>
