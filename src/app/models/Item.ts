@@ -1,0 +1,10 @@
+export interface  Item{
+  id: number,
+  name: string,
+  price: number,
+  stock: number,
+  image: string,
+  clearence: boolean,
+  quantity: number,
+
+}

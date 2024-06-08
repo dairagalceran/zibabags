@@ -1,0 +1,28 @@
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Stock</th>
+      </tr>
+    </thead>
+
+    <!-- TEMPLATE todo lo que tiene que ver con la visual pero no a la lógica de la aplicación -->
+    <tbody>
+      @for(item  of bagItems; track item.id){
+        <tr >
+          <td><img [src]="item.image" [alt]="item.name"/></td>
+          <td [ngClass]="{'clearence': item.clearence , 'resaltar': item.clearence}">{{item.name | uppercase}}</td>
+          <td>{{item.price | currency}}</td>
+          @if(item.stock > 0){
+            <td>{{item.stock}}</td>
+          }@else {
+            <td><span class="badge text-bg-secondary">SIN STOCK</span> </td>
+          }
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

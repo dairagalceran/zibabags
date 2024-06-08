@@ -7,6 +7,8 @@ import { CarritoCompraComponent } from './carrito-compra/carrito-compra.componen
 import { HeaderComponent } from './components/header/header.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { BagItemsComponent } from './components/bag-items/bag-items.component';
+import { AddItemComponent } from './components/add-item/add-item.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { FooterComponent } from './components/footer/footer.component';
     CarritoCompraComponent,
     HeaderComponent,
     CategoriesComponent,
-    FooterComponent   // declarar todos los componentes a usar
+    FooterComponent,
+    BagItemsComponent,
+    AddItemComponent   // declarar todos los componentes a usar
   ],
   imports: [
     BrowserModule,
