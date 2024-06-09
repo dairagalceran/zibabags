@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import {Item} from '../../models/Item';
+import { Item } from '../../models/Item';
 
 @Component({
-  selector: 'app-bag-items',
-  templateUrl: './bag-items.component.html',
-  styleUrl: './bag-items.component.scss'
+  selector: 'app-rucksack-items',
+  templateUrl: './rucksack-items.component.html',
+  styleUrl: './rucksack-items.component.scss'
 })
 
-export class BagItemsComponent {
+export class RucksackItemsComponent {
 
   increaseQuantity(item : Item): void{
     if(item.stock> item.quantity){
@@ -33,39 +33,37 @@ export class BagItemsComponent {
   }
 
   //MOCK utilizado para probar el front end hasta que los datos se traigan de una API
-  bagItems: Item[] = [
+  rucksackItems: Item[] = [
     {
     "id":1,
-    "name": "Bolsa reutilizable",
+    "name": "Enterprise",
     "price": 4000,
     "stock": 3,
-    "image": "assets/img/bolsa.png",
+    "image": "assets/img/mochila.webp",
     "clearence": true,
     "quantity": 0,
-    "category":'bolsas',
+    "category":'',
   },
   {
-    "name": "Bolsa para zapatillas",
+    "name": "Mountain",
     "price": 7500,
     "stock": 0,
-    "image": 'assets/img/bolsa.png',
+    "image": 'assets/img/mochila.webp',
     "clearence": false,
     "id":  0,
     "quantity": 0,
-    "category":'mochilas',
+    "category":'',
   },
   {
-    "name": "Bolsa organizadora de viaje",
+    "name": "Travel Age",
     "price": 5500,
     "stock": 12,
-    "image": 'assets/img/bolsa.png',
+    "image": 'assets/img/mochila.webp',
     "clearence": false,
     "id": 3,
     "quantity": 0,
-    "category":'rinoneras',
+    "category":'',
   }
 ];
-
-
 
 }

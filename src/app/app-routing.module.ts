@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { BagItemsComponent } from './components/bag-items/bag-items.component';
+import { BagsLayoutComponent } from './components/bags-layout/bags-layout.component';
+import { RucksacksLayoutComponent } from './components/rucksacks-layout/rucksacks-layout.component';
 
 const routes: Routes = [
 
@@ -11,7 +13,11 @@ const routes: Routes = [
   },
   {
     path:'bolsas',
-    component: BagItemsComponent,
+    component: BagsLayoutComponent,
+  },
+  {
+    path:'mochilas',
+    component: RucksacksLayoutComponent,
   },
 ];
 
