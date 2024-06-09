@@ -1,22 +1,35 @@
 <h1>Nuestros productos</h1>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">Categoría</th>
-    </tr>
-  </thead>
 
-  <!-- TEMPLATE todo lo que tiene que ver con la visual pero no a la lógica de la aplicación -->
-  <tbody>
-    @for(categoria  of categorias; track categoria.id){
-      <tr >
-        <td><img [src]="categoria.image" [alt]="categoria.name"/></td>
-        <td [ngClass]="{'clearence': categoria.clearence , 'resaltar': categoria.clearence}">{{categoria.name | uppercase}}</td>
-      </tr>
-    }
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Categoría</th>
+          </tr>
+        </thead>
+
+        <!-- TEMPLATE todo lo que tiene que ver con la visual pero no a la lógica de la aplicación -->
+        <tbody>
+          @for(categoria  of categorias; track categoria.id){
+            <tr >
+              <td><img [src]="categoria.image" [alt]="categoria.name"/></td>
+              <td [ngClass]="{'clearence': categoria.clearence , 'resaltar': categoria.clearence}">{{categoria.name | uppercase}}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+
+
+    </div>
+    <div class="col-2">
+      <app-carrito-compra></app-carrito-compra>
+    </div>
+  </div>
+</div>
+
 
 <!-- DIRECTIVAS ESTRUCTURALES
     <tr *ngFor="let categoria of categorias" >
