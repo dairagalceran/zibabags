@@ -3,11 +3,11 @@
 <div class="container">
   <div class="row">
     <div class="col-10">
-      <table class="table">
+      <table class="table text-center" width="50">
         <thead>
           <tr>
             <th scope="col"></th>
-            <th scope="col">Categoría</th>
+            <th scope="col"><h3>Categorías</h3></th>
           </tr>
         </thead>
 
@@ -15,8 +15,11 @@
         <tbody>
           @for(categoria  of categorias; track categoria.id){
             <tr >
-              <td><img [src]="categoria.image" [alt]="categoria.name"/></td>
-              <td [ngClass]="{'clearence': categoria.clearence , 'resaltar': categoria.clearence}">{{categoria.name | uppercase}}</td>
+              <td><img width="100" [src]="categoria.image" [alt]="categoria.name"/></td>
+              <td [ngClass]="{'clearence': categoria.clearence , 'resaltar': categoria.clearence}"
+                  routerLink="/{{categoria.router}}">
+                  {{categoria.name | uppercase}}
+              </td>
             </tr>
           }
         </tbody>

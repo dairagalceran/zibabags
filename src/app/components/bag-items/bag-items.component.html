@@ -3,7 +3,7 @@
     <div class="col-10">
 
 <div>
-  <table class="table">
+  <table class="table text-center">
     <thead>
       <tr>
         <th scope="col"></th>
@@ -18,7 +18,7 @@
     <tbody>
       @for( item of bagItems ; track item.id ){
         <tr>
-          <td><img  [src]="item.image" [alt]="item.name"/></td> <!--src="../../../assets/img/bolsa.png"-->
+          <td><img img-thumbnail width="40px"   [src]="item.image" [alt]="item.name"/></td> <!--src="../../../assets/img/bolsa.png"-->
           <td [ngClass]="{'clearence': item.clearence , 'resaltar': item.clearence}">{{item.name | uppercase}}</td>
           <td>{{item.price | currency}}</td>
           @if(item.stock > 0){
@@ -28,13 +28,25 @@
           }
 
           <td>
-              <button class="btn  btn-secondary btn-sm" (click)="decreseQuantity(item)"> - </button>
-                {{item.quantity}}
-                <input  type="text"
-                        class="input input-group-sm"
-                        [(ngModel)]="item.quantity"
-                        (keyup)="changeQuantity($event, item)">
-              <button class="btn  btn-secondary btn-sm" (click)="increaseQuantity(item)"> + </button>
+
+            <div class="input-group" *ngIf="item.stock==0">
+              <div class="input-group" >
+                <div class="input-group-prepend">
+                  <button class="btn  btn-secondary btn-sm" (click)="decreseQuantity(item)"> - </button>
+                </div>
+
+                  <input  type="text"
+                          class="input input-group-sm"
+                          [(ngModel)]="item.quantity"
+                          (keyup)="changeQuantity($event, item)">
+
+                <div class="input-group-prepend" >
+                  <button class="btn  btn-secondary btn-sm" (click)="increaseQuantity(item)"> + </button>
+                </div>
+                {{item.quantity }}
+              </div>
+            </div>
+
           </td>
         </tr>
       }

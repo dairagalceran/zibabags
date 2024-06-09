@@ -13,21 +13,26 @@ export class CategoriesComponent {
   categorias: Categoria[] = [
     {
     "id":1,
-    "name": "Bolsa reutilizable",
-    "image": "../../assets/img/bolsa.png",
+    "name": "Bolsas",
+    "image": "../../../assets/img/bolsa.png",
     "clearence": true,
+    "router": 'bolsas',
   },
   {
     "id":  0,
     "name": "Mochilas",
-    "image": '../assets/img/mochila.webp',
+    "image": '../../assets/img/mochila.webp',
     "clearence": false,
+    "router": 'mochilas',
+
   },
   {
     "id": 3,
     "name": "Riñoneras",
-    "image": '/assets/img/rinonera.png',
+    "image": '../../../assets/img/rinonera.png',
     "clearence": false,
+    "router": 'rinoneras',
+
   }
 ];
 

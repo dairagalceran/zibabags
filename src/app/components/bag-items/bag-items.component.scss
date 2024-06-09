@@ -9,3 +9,11 @@ h1{
 .resaltar{
   color: rgb(94, 59, 78);
 }
+
+td, th{
+  vertical-align: middle;
+}
+
+input{
+  max-width: 40px;
+}

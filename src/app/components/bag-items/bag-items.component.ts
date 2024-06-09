@@ -21,13 +21,14 @@ export class BagItemsComponent {
     }
   }
 
-  changeQuantity(event, item : Item){
+  changeQuantity(event, item : Item): void {
     console.log(event);
-    if(event.keyCode >= 48 && event.keyCode <= 57){
+    if(event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode ==8 ){
       console.log(event.keyCode);
-      return item.quantity
+      //armar numero
+      //compara con  item.quantity
     }else{
-      return alert("Solo números");
+      console.log("Solo números");
     }
   }
 
@@ -38,30 +39,30 @@ export class BagItemsComponent {
     "name": "Bolsa reutilizable",
     "price": 4000,
     "stock": 3,
-    "image": "../../assets/img/bolsa.png",
+    "image": "assets/img/bolsa.png",
     "clearence": true,
     "quantity": 0,
-    "category":'',
+    "category":'bolsas',
   },
   {
     "name": "Mochilas",
     "price": 7500,
     "stock": 0,
-    "image": '../../assets/img/mochila.webp',
+    "image": 'assets/img/mochila.webp',
     "clearence": false,
     "id":  0,
     "quantity": 0,
-    "category":'',
+    "category":'mochilas',
   },
   {
     "name": "Riñoneras",
     "price": 5500,
     "stock": 12,
-    "image": '../../assets/img/rinonera.png',
+    "image": 'assets/img/rinonera.png',
     "clearence": false,
     "id": 3,
-    "quantity": 10,
-    "category":'',
+    "quantity": 0,
+    "category":'rinoneras',
   }
 ];
 
