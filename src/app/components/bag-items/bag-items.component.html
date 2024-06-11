@@ -13,88 +13,23 @@
     <!-- TEMPLATE todo lo que tiene que ver con la visual pero no a la lógica de la aplicación -->
     <tbody>
       @for( item of bagItems ; track item.id ){
-        <tr>
-          <td><img class="img-thumbnail " width="100" [src]="item.image" [alt]="item.name"/></td> <!--src="../../../assets/img/bolsa.png"-->
-          <td [ngClass]="{'clearence': item.clearence , 'resaltar': item.clearence}">{{item.name | uppercase}}</td>
-          <td>{{item.price | currency}}</td>
-          @if(item.stock > 0){
-            <td>{{item.stock}}</td>
-          }@else {
-            <td><span class="badge text-bg-secondary">SIN STOCK</span> </td>
-          }
-
-          <td>
-            <div class="input-group" *ngIf="item.stock > 0">
-              <div class="input-group" >
-                <div class="input-group-prepend">
-                  <button class="btn  btn-secondary btn-sm" (click)="decreseQuantity(item)"> - </button>
-                </div>
-
-                  <input  type="text"
-                          class="input input-group-sm"
-                          [(ngModel)]="item.quantity"
-                          (keyup)="changeQuantity($event, item)">
-
-                <div class="input-group-prepend" >
-                  <button class="btn  btn-secondary btn-sm" (click)="increaseQuantity(item)"> + </button>
-                </div>
-              </div>
-            </div>
-          </td>
-        </tr>
+        @if(item.category == "bolsas"){
+          <tr [ngClass]="{'clearence': item.clearence}">
+            <td><img class="img-thumbnail " width="100" [src]="item.image" [alt]="item.name"/></td>
+            <td [ngClass]="{'clearence': item.clearence}">{{item.name | uppercase}}</td>
+            <td>{{item.price | currency}}</td>
+            @if(item.stock > 0){
+              <td>{{item.stock}}</td>
+            }@else {
+              <td><span class="badge text-bg-secondary">SIN STOCK</span> </td>
+            }
+            <td>
+              <app-input-integer [(quantity)]="item.quantity"  [maxQuantity]="item.stock" *ngIf="item.stock > 0"></app-input-integer>
+            </td>
+          </tr>
+        }
       }
     </tbody>
   </table>
 </div>
 
-
-<!--
-<div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Precio</th>
-        <th scope="col">Stock</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-  -->
-    <!-- TEMPLATE todo lo que tiene que ver con la visual pero no a la lógica de la aplicación -->
-    <!--
-    <tbody>
-      @for( item of bagItems ; track item.id ){
-        <tr >
-          <td><img  [src]="item.image" [alt]="item.name"/></td>  --> <!--src="../../../assets/img/bolsa.png"-->
-          <!--
-          <td [ngClass]="{'clearence': item.clearence , 'resaltar': item.clearence}">{{item.name | uppercase}}</td>
-          <td>{{item.price | currency}}</td>
-          @if(item.stock > 0){
-            <td>{{item.stock}}</td>
-          }@else {
-            <td><span class="badge text-bg-secondary">SIN STOCK</span> </td>
-          }
-
-          <td>
-              <button class="btn  btn-secondary btn-sm" (click)="decreseQuantity(item)"> - </button>
-                {{item.quantity}}
-                <input  type="text"
-                        class="input input-group-sm"
-                        [(ngModel)]="item.quantity"
-                        (keyup)="changeQuantity($event, item)">
-              <button class="btn  btn-secondary btn-sm" (click)="increaseQuantity(item)"> + </button>
-          </td>
-        </tr>
-      }
-    </tbody>
-  </table>
-</div>
-
-  (increaseQuantity)="upQuantity($event)"
-    binding () del  ts a html
-    =
-    nombre método  que va a capturar el evento en bag-items-component.ts
-    $event se convierte en addItem
-
--->

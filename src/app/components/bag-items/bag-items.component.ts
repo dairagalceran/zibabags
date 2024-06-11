@@ -8,30 +8,16 @@ import {Item} from '../../models/Item';
 })
 
 export class BagItemsComponent {
+[x: string]: any;
 
-  increaseQuantity(item : Item): void{
-    if(item.stock> item.quantity){
-      item.quantity++;
-    }
+
+  message: string='';
+
+  maxReached(m: string){
+    console.log(m) ;
+    this.message= m;
+    alert(m);
   }
-
-  decreseQuantity(item: Item): void{
-    if(item.quantity>0 || item.stock<item.quantity){
-      item.quantity--;
-    }
-  }
-
-  changeQuantity(event, item : Item): void {
-    console.log(event);
-    if(event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode ==8 ){
-      console.log(event.keyCode);
-      //armar numero
-      //compara con  item.quantity
-    }else{
-      console.log("Solo números");
-    }
-  }
-
   //MOCK utilizado para probar el front end hasta que los datos se traigan de una API
   bagItems: Item[] = [
     {
@@ -40,30 +26,71 @@ export class BagItemsComponent {
     "price": 4000,
     "stock": 3,
     "image": "assets/img/bolsa.png",
-    "clearence": true,
+    "clearence": false,
     "quantity": 0,
     "category":'bolsas',
   },
   {
+    "id":  0,
+    "name": "Mountain",
+    "price": 7500,
+    "stock": 0,
+    "image": 'assets/img/mochila.webp',
+    "clearence": false,
+    "quantity": 0,
+    "category":'mochilas',
+  },
+  {
+    "id": 3,
+    "name": "Travel Age",
+    "price": 5500,
+    "stock": 12,
+    "image": 'assets/img/mochila.webp',
+    "clearence": true,
+    "quantity": 0,
+    "category":'mochilas',
+  },
+  {
+    "id":  10,
     "name": "Bolsa para zapatillas",
     "price": 7500,
     "stock": 0,
     "image": 'assets/img/bolsa.png',
     "clearence": false,
-    "id":  0,
     "quantity": 0,
-    "category":'mochilas',
+    "category":'bolsas',
   },
   {
+    "id": 7,
+    "name": "Riñoneras",
+    "price": 3650,
+    "stock":7,
+    "image": 'assets/img/rinonera.png',
+    "clearence": false,
+    "quantity": 0,
+    "category":'rinonera',
+  },
+  {
+    "id": 5,
     "name": "Bolsa organizadora de viaje",
     "price": 5500,
     "stock": 12,
     "image": 'assets/img/bolsa.png',
-    "clearence": false,
-    "id": 3,
+    "clearence": true,
     "quantity": 0,
-    "category":'rinoneras',
-  }
+    "category":'bolsas',
+  },
+  {
+    "id":8,
+    "name": "Enterprise",
+    "price": 4000,
+    "stock": 3,
+    "image": "assets/img/mochila.webp",
+    "clearence": true,
+    "quantity": 0,
+    "category":'mochilas',
+  },
+
 ];
 
 

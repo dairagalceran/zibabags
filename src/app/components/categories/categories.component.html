@@ -14,15 +14,15 @@
         <!-- TEMPLATE todo lo que tiene que ver con la visual pero no a la lógica de la aplicación -->
         <tbody>
           @for(categoria  of categorias; track categoria.id){
-            <tr >
-              <td><img width="100" [src]="categoria.image" [alt]="categoria.name"/></td>
-              <td [ngClass]="{'clearence': categoria.clearence , 'resaltar': categoria.clearence}"
+            <tr>
+              <td> <img width="100" [src]="categoria.image" [alt]="categoria.name"> </td>
+              <td
+                  [ngClass]="{'clearence': categoria.clearence , 'resaltar': categoria.clearence}"
                   routerLink="/{{categoria.router}}">
                   {{categoria.name | uppercase}}
               </td>
             </tr>
           }
-        </tbody>
       </table>
   </div>
   </div>
