@@ -30,7 +30,7 @@
             }
 
             <td *ngIf="item.stock > 0">
-                <app-input-integer [(quantity)]="item.quantity"  [maxQuantity]="item.stock" *ngIf="item.stock > 0"></app-input-integer>
+                <app-input-integer [(quantity)]="item.quantity"  [maxQuantity]="item.stock" ></app-input-integer>
                 <button class="btn  btn-secondary btn-sm mt-3" (click)="addItemToCart(item)">Seleccionar</button>
             </td>
           </tr>
