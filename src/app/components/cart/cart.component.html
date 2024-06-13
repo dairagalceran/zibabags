@@ -1,1 +1,15 @@
-<h5>Carrito de compras</h5>
+<div>
+    <h3>Tu selección ...</h3>
+</div>
+
+<div>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let item of cartList$ | async"> <!-- cartList propiedad  del  componente que esta aislasda
+                                                                  pero nos subscribimos al servicio para ir actualizandola  -->
+      {{item.name}} : {{item.quantity}}
+    </li>
+
+  </ul>
+</div>
+
+

@@ -12,23 +12,23 @@
 
     <!-- TEMPLATE todo lo que tiene que ver con la visual pero no a la lógica de la aplicación -->
     <tbody>
-      @for( item of rucksackItems ; track item.id ){
+      @for( item of productItems ; track item.id ){
         @if(item.category == "mochilas"){
           <tr>
-            <td><img class="img-thumbnail " width="100" [src]="item.image" [alt]="item.name"/></td> <!--src="../../../assets/img/bolsa.png"-->
+            <td [ngClass]="{'clearence': item.clearence}"><img class="img-thumbnail " width="100" [src]="item.image" [alt]="item.name"/></td> <!--src="../../../assets/img/bolsa.png"-->
             <td [ngClass]="{'clearence': item.clearence , 'resaltar': item.clearence}">{{item.name | uppercase}}</td>
-            <td>{{item.price | currency}}</td>
+            <td [ngClass]="{'clearence': item.clearence}">{{item.price | currency}}</td>
             @if(item.stock > 0){
               <td>{{item.stock}}</td>
             }@else {
               <td><span class="badge text-bg-secondary">SIN STOCK</span> </td>
             }
 
-            <td>
-              <app-input-integer [quantity]="item.quantity"  [maxQuantity]="item.stock"   *ngIf="item.stock > 0"></app-input-integer>
-            </td>
+            <td *ngIf="item.stock > 0">
+              <app-input-integer [(quantity)]="item.quantity"  [maxQuantity]="item.stock"  ></app-input-integer>
+              <button class="btn  btn-secondary btn-sm mt-3" (click)="addItemToCart(item)">Seleccionar</button>
+          </td>
           </tr>
-
         }
       }
     </tbody>

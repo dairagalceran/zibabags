@@ -34,7 +34,6 @@ export class InputIntegerComponent {
   }
 
   changeQuantity(event): void {
-    console.log(event.keyCode);
     if(event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode ==8 ){
       if(this.maxQuantity>= this.quantity){
         this.quantityChange.emit(this.quantity);

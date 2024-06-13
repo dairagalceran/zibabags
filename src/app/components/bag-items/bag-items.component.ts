@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Item} from '../../models/Item';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-bag-items',
@@ -7,24 +8,39 @@ import {Item} from '../../models/Item';
   styleUrl: './bag-items.component.scss'
 })
 
+// Controller porque tiene los eventos  del patron MVC
 export class BagItemsComponent {
-[x: string]: any;
-
 
   message: string='';
+
+  // se recibe por parámetro  y al reconocer que necesita un cartService y
+  // decide si lo crea por ser la primera vez
+  //o parsa el que ya está generado
+  //Patrón Singleton
+  constructor(private cartService: CartService){}
+
+  addItemToCart(item: Item){
+    if(item.quantity>0){
+      this.cartService.addItemToCart(item);
+    }
+    item.stock -= item.quantity;
+    item.quantity =0;
+  }
 
   maxReached(m: string){
     console.log(m) ;
     this.message= m;
     alert(m);
   }
+
+
   //MOCK utilizado para probar el front end hasta que los datos se traigan de una API
-  bagItems: Item[] = [
+  productItems: Item[] = [
     {
     "id":1,
     "name": "Bolsa reutilizable",
     "price": 4000,
-    "stock": 3,
+    "stock": 5,
     "image": "assets/img/bolsa.png",
     "clearence": false,
     "quantity": 0,

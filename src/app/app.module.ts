@@ -7,11 +7,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BagItemsComponent } from './components/bag-items/bag-items.component';
-import { CartComponent } from './components/cart/cart.component';
 import { BagsLayoutComponent } from './components/bags-layout/bags-layout.component';
 import { RucksacksLayoutComponent } from './components/rucksacks-layout/rucksacks-layout.component';
 import { RucksackItemsComponent } from './components/rucksack-items/rucksack-items.component';
 import { InputIntegerComponent } from './components/input-integer/input-integer.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -20,10 +20,10 @@ import { InputIntegerComponent } from './components/input-integer/input-integer.
     CategoriesComponent,
     FooterComponent,
     BagItemsComponent,
-    CartComponent,
     BagsLayoutComponent,
     RucksacksLayoutComponent,
     RucksackItemsComponent,
+    CartComponent,
     InputIntegerComponent,
   ],
   imports: [

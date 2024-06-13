@@ -1,32 +1,31 @@
-<h1>Nuestros productos</h1>
-
-<div class="container">
-  <div class="row">
-    <div class="col-10">
-      <table class="table text-center" width="50">
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col"><h3>Categorías</h3></th>
-          </tr>
-        </thead>
-
-        <!-- TEMPLATE todo lo que tiene que ver con la visual pero no a la lógica de la aplicación -->
-        <tbody>
-          @for(categoria  of categorias; track categoria.id){
-            <tr>
-              <td> <img width="100" [src]="categoria.image" [alt]="categoria.name"> </td>
-              <td
-                  [ngClass]="{'clearence': categoria.clearence , 'resaltar': categoria.clearence}"
-                  routerLink="/{{categoria.router}}">
-                  {{categoria.name | uppercase}}
-              </td>
-            </tr>
-          }
-      </table>
+<div>
+  <div>
+    <h1 class="m-5"> Siempre vamos con vos...</h1>
   </div>
+
+  <div class="container">
+    <div class="col-12">
+      <div class="row">
+        <ng-container *ngFor="let categoria of categorias">
+          <div class="card col-md-3 mt-2 me-4 bb-5">
+              <img  [src]="categoria.image" [alt]="categoria.name"  >
+            <h4 routerLink="/{{categoria.router}}" class="p-2"
+            > {{categoria.name | uppercase}}</h4>
+            @if(categoria.clearence){
+              <h6 class="p-2"
+              [ngClass]="{'clearence': categoria.clearence, }"
+            >Descuentos hasta 20%</h6>
+            }
+
+          </div>
+        </ng-container>
+    </div>
+
+    </div>
   </div>
 </div>
+
+
 
 
 <!-- DIRECTIVAS ESTRUCTURALES
