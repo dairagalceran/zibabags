@@ -9,13 +9,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./cart.component.scss'],
 })
 
-export class CartComponent implements OnInit{
 
-  //cartList:Item[]=[]; //variable del componente
+export class CartComponent implements OnInit{
 
   cartList$: Observable<Item[]>;
 
   constructor(private cartService: CartService){};
+
 
   ngOnInit() {
     /**
@@ -29,6 +29,12 @@ export class CartComponent implements OnInit{
   }
 
 
+  deleteItemOfCart(item: Item){
+    if(item){
+      this.cartService.deleteItemOfCart(item);
+    }
+    console.log("delete of cart.comp.ts "+item.id);
+  }
 
 
 }

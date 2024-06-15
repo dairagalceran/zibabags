@@ -1,0 +1,77 @@
+
+<section class="h-100" style="background-color: #eee;">
+  <div class="container h-100 py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-10">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="fw-normal mb-0 text-black">Carrito de compras</h3>
+          <div>
+            <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price <i
+              class="fas fa-angle-down mt-1"></i></a></p>
+          </div>
+        </div>
+        <div>
+          <ng-container *ngFor="let item of cartList$ | async">
+            <div class="card-body background-color-secondary p-4 ">
+              <div class="row d-flex justify-content-between align-items-center bg-secondary p-2" style="--bs-bg-opacity: .2">
+                <div class="col-md-2 col-lg-2 col-xl-2">
+                  <img
+                  [src]="item.image"
+                  class="img-fluid rounded-3" [alt]="item.name" >
+                </div>
+                <div class="col-md-3 col-lg-3 col-xl-3">
+                  <p class="lead fw-normal mb-2"> {{item.name | uppercase}}</p>
+                </div>
+                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                  <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                    <i class="bi bi-caret-up-fill"></i>
+                  </button>
+
+                  <input id="form1" min="0" name="quantity" value="{{item.quantity}}" type="number"
+                    class="form-control form-control-sm" />
+
+                  <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                    <i class="bi bi-caret-down-fill"></i>
+                  </button>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                  <app-total-by-item [quantity]="item.quantity" [price]="item.price"></app-total-by-item>
+                </div>
+                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                  <button class="btn  btn-sm" (click)="deleteItemOfCart(item)"><img  class="icons" src="assets/img/basura-48.png" alt="" ></button>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+    <div class="card rounded-3 mb-4">
+        <div class="card mb-4">
+          <div class="card-body p-4 justify-content-between flex-row">
+            <div class="row d-flex justify-content-between align-items-center  p-2" >
+              <div class="col-md-2 col-lg-2 col-xl-2">
+                <p class="lead fw-normal mb-2"> <strong>Total:</strong></p>
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+                <p class="lead fw-normal mb-2"> <strong>{{"$50000" | uppercase}}</strong></p>
+              </div>
+              <div  class="col-md-3 col-lg-3 col-xl-3">
+                <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-secondary btn-lg ms-3" routerLink="/">Continuar comprando</button>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-warning btn-block btn-lg">Pagar</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+</section>

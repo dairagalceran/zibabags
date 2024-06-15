@@ -1,62 +1,44 @@
-import { Component,OnInit } from '@angular/core';
-import {Item} from '../../models/Item';
+import { Component } from '@angular/core';
+import { Item } from '../../models/Item';
 import { CartService } from '../../services/cart.service';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-bag-items',
-  templateUrl: './bag-items.component.html',
-  styleUrls: ['./bag-items.component.scss'],
+  selector: 'app-shopping-cart',
+  templateUrl: './shopping-cart.component.html',
+  styleUrl: './shopping-cart.component.scss'
 })
 
-// Controller porque tiene los eventos  del patron MVC
-export class BagItemsComponent {
 
-  message: string='';
-  product: Item;
+export class ShoppingCartComponent {
 
   cartList$: Observable<Item[]>;
+  total:number=0;
 
-  // se recibe por parámetro  y al reconocer que necesita un cartService y
-  // decide si lo crea por ser la primera vez
-  //o parsa el que ya está generado
-  //Patrón Singleton
-  constructor(private cartService: CartService){}
+
+  constructor(private cartService: CartService){};
 
   ngOnInit(){
     this.cartList$ = this.cartService.shopList.asObservable();
+
   }
 
-
-  addItemToCart(item: Item){
-    if(item.quantity>0){
-      this.cartService.addItemToCart(item);
+  deleteItemOfCart(item: Item){
+    if(item){
+      this.cartService.deleteItemOfCart(item);
     }
-    item.stock -= item.quantity;
-    item.quantity =0;
   }
 
-  maxReached(m: string){
-    console.log(m) ;
-    this.message= m;
-    alert(m);
+  getTotal(){
+
+
   }
-
-  updateStock(item: Item){
-    let product = this.productItems.find(x => x.id ==item.id);
-    console.log("product en items/update"+this.product)
-    //  if(item){
-
-        this.product.stock += item.quantity;
-    //  }
-    }
-
-
 
   //MOCK utilizado para probar el front end hasta que los datos se traigan de una API
+
   productItems: Item[] = [
     {
-    "id":17,
+    "id":1,
     "name": "Bolsa reutilizable",
     "price": 4000,
     "stock": 5,
@@ -127,7 +109,5 @@ export class BagItemsComponent {
   },
 
 ];
-
-
 
 }

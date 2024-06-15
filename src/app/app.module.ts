@@ -12,6 +12,8 @@ import { RucksacksLayoutComponent } from './components/rucksacks-layout/rucksack
 import { RucksackItemsComponent } from './components/rucksack-items/rucksack-items.component';
 import { InputIntegerComponent } from './components/input-integer/input-integer.component';
 import { CartComponent } from './components/cart/cart.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { TotalByItemComponent } from './components/total-by-item/total-by-item.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { CartComponent } from './components/cart/cart.component';
     RucksackItemsComponent,
     CartComponent,
     InputIntegerComponent,
+    ShoppingCartComponent,
+    TotalByItemComponent,
   ],
   imports: [
     BrowserModule,

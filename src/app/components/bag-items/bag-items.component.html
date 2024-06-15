@@ -1,42 +1,40 @@
-<div>
-  <h3>Nuestros productos</h3>
+<div class="title">
+  <h3>Bolsas pensadas en vos y nuestro planeta</h3>
 </div>
 <div>
-  <table class="table text-center , align-middle
-  ">
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Precio</th>
-        <th scope="col">Stock</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-
-    <!-- TEMPLATE todo lo que tiene que ver con la visual pero no a la lógica de la aplicación -->
-    <tbody>
-      @for( item of productItems ; track item.id ){
-        @if(item.category == "bolsas"){
-          <tr>
-            <td [ngClass]="{'clearence': item.clearence}"><img class="img-thumbnail " width="100"  [src]="item.image" [alt]="item.name"/></td>
-            <td [ngClass]="{'clearence': item.clearence}">{{item.name | uppercase}}</td>
-            <td [ngClass]="{'clearence': item.clearence}">{{item.price | currency}}</td>
-
-            @if(item.stock > 0){
-              <td>{{item.stock}}</td>
-            }@else {
-              <td><span class="badge text-bg-secondary">SIN STOCK</span> </td>
-            }
-
-            <td *ngIf="item.stock > 0">
-                <app-input-integer [(quantity)]="item.quantity"  [maxQuantity]="item.stock" ></app-input-integer>
-                <button class="btn  btn-secondary btn-sm mt-3" (click)="addItemToCart(item)">Seleccionar</button>
-            </td>
-          </tr>
-        }
-      }
-    </tbody>
-  </table>
+  <ng-container *ngFor="let item of productItems" >
+    @if(item.category == "bolsas"){
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex flex-row align-items-center">
+            <div class="ms-3">
+              <img width="100"
+                [src]="item.image"
+                class="img-fluid rounded-3" [alt]="item.name" >
+            </div>
+            <div class="ms-5" [ngClass]="{'clearence': item.clearence}">
+              <h5>{{item.name | uppercase}}</h5>
+                <p *ngIf="item.clearence"  class="text-decoration-line-through">${{item.price}}</p>
+                <h6 *ngIf="!item.clearence" class="small mb-0"><strong>${{item.price}}</strong></h6>
+              <h5 *ngIf="item.clearence">Oferta de la semana</h5>
+            </div>
+          </div>
+          <div class="d-flex flex-row align-items-center">
+            <div>
+              @if(!item.stock){
+                <h5><span class="badge text-bg-secondary">SIN STOCK</span></h5>
+              }
+            </div>
+            <div class="mx-3  align-items-center" *ngIf="item.stock">
+              <app-input-integer [(quantity)]="item.quantity"  [maxQuantity]="item.stock" ></app-input-integer>
+              <button class="btn  btn-secondary btn-sm mt-3" (click)="addItemToCart(item)">Seleccionar</button>
+              <p class="fw-normal  mb-0">Stock: {{item.stock }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </ng-container>
 </div>
-

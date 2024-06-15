@@ -13,7 +13,7 @@ export class InputIntegerComponent {
   quantity: number = 0;
 
   @Input()
-  maxQuantity!: number;
+  maxQuantity: number;
 
   @Output()
   quantityChange: EventEmitter<number> = new EventEmitter<number>(); //two-way-data binding
