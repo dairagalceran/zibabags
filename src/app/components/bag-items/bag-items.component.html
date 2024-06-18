@@ -15,8 +15,8 @@
             </div>
             <div class="ms-5" [ngClass]="{'clearence': item.clearence}">
               <h5>{{item.name | uppercase}}</h5>
-                <p *ngIf="item.clearence"  class="text-decoration-line-through">${{item.price}}</p>
-                <h6 *ngIf="!item.clearence" class="small mb-0"><strong>${{item.price}}</strong></h6>
+                <p *ngIf="item.clearence"  class="text-decoration-line-through ">${{item.price |currency}}</p>
+                <h6 *ngIf="!item.clearence" class="small mb-0"><strong>${{item.price |currency}}</strong></h6>
               <h5 *ngIf="item.clearence">Oferta de la semana</h5>
             </div>
           </div>

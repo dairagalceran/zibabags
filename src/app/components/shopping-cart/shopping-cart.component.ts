@@ -1,25 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Item } from '../../models/Item';
 import { CartService } from '../../services/cart.service';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
-  styleUrl: './shopping-cart.component.scss'
+  styleUrls: ['./shopping-cart.component.scss']
 })
 
 
-export class ShoppingCartComponent {
+export class ShoppingCartComponent implements OnInit{
 
   cartList$: Observable<Item[]>;
-  total:number=0;
-
+  total$: Observable<number>;
 
   constructor(private cartService: CartService){};
 
   ngOnInit(){
     this.cartList$ = this.cartService.shopList.asObservable();
+    this.total$ = this.cartList$.pipe(
+      map(items => this.getTotal(items))
+    );
+
+  }
+
+
+  getTotal(items: Item[]):number{
+    return items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   }
 
@@ -29,11 +37,10 @@ export class ShoppingCartComponent {
     }
   }
 
-  getTotal(){
+}
 
-
-  }
-
+/**
+ *
   //MOCK utilizado para probar el front end hasta que los datos se traigan de una API
 
   productItems: Item[] = [
@@ -109,5 +116,4 @@ export class ShoppingCartComponent {
   },
 
 ];
-
-}
+ */

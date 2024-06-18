@@ -4,7 +4,7 @@ import { Item } from '../../models/Item';
 @Component({
   selector: 'app-input-integer',
   templateUrl: './input-integer.component.html',
-  styleUrl: './input-integer.component.scss'
+  styleUrls: ['./input-integer.component.scss']
 })
 export class InputIntegerComponent {
 
@@ -43,6 +43,7 @@ export class InputIntegerComponent {
     }else{
       console.log("Solo números");
       this.quantity=0;
+
     }
   }
 }

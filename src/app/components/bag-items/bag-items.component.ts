@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import {Item} from '../../models/Item';
 import { CartService } from '../../services/cart.service';
 import { Observable } from 'rxjs';
+import { ProductsDataService } from '../../services/products-data.service';
 
 @Component({
   selector: 'app-bag-items',
@@ -9,22 +10,28 @@ import { Observable } from 'rxjs';
   styleUrls: ['./bag-items.component.scss'],
 })
 
-// Controller porque tiene los eventos  del patron MVC
-export class BagItemsComponent {
 
-  message: string='';
+export class BagItemsComponent implements OnInit{
+
   product: Item;
-
   cartList$: Observable<Item[]>;
+  productItems: Item[] =[];
 
   // se recibe por parámetro  y al reconocer que necesita un cartService y
   // decide si lo crea por ser la primera vez
   //o parsa el que ya está generado
   //Patrón Singleton
-  constructor(private cartService: CartService){}
+  constructor(
+              private cartService: CartService,
+              private productsDataService: ProductsDataService ){
+  }
+
 
   ngOnInit(){
     this.cartList$ = this.cartService.shopList.asObservable();
+    this.productsDataService.getAll()
+          .subscribe(productsData => this.productItems = productsData);
+
   }
 
 
@@ -36,97 +43,13 @@ export class BagItemsComponent {
     item.quantity =0;
   }
 
-  maxReached(m: string){
-    console.log(m) ;
-    this.message= m;
-    alert(m);
-  }
-
-  updateStock(item: Item){
-    let product = this.productItems.find(x => x.id ==item.id);
-    console.log("product en items/update"+this.product)
-    //  if(item){
-
+//no se utiliza
+  updateStock(item : Item){
+    let product = this.productItems.find(x =>  x.id == item.id);
+      if(product){
         this.product.stock += item.quantity;
-    //  }
+      }
     }
-
-
-
-  //MOCK utilizado para probar el front end hasta que los datos se traigan de una API
-  productItems: Item[] = [
-    {
-    "id":17,
-    "name": "Bolsa reutilizable",
-    "price": 4000,
-    "stock": 5,
-    "image": "assets/img/bolsa.png",
-    "clearence": false,
-    "quantity": 0,
-    "category":'bolsas',
-  },
-  {
-    "id":  0,
-    "name": "Mountain",
-    "price": 7500,
-    "stock": 0,
-    "image": 'assets/img/mochila.webp',
-    "clearence": false,
-    "quantity": 0,
-    "category":'mochilas',
-  },
-  {
-    "id": 3,
-    "name": "Travel Age",
-    "price": 5500,
-    "stock": 12,
-    "image": 'assets/img/mochila.webp',
-    "clearence": true,
-    "quantity": 0,
-    "category":'mochilas',
-  },
-  {
-    "id":  10,
-    "name": "Bolsa para zapatillas",
-    "price": 7500,
-    "stock": 0,
-    "image": 'assets/img/bolsa.png',
-    "clearence": false,
-    "quantity": 0,
-    "category":'bolsas',
-  },
-  {
-    "id": 7,
-    "name": "Riñoneras",
-    "price": 3650,
-    "stock":7,
-    "image": 'assets/img/rinonera.png',
-    "clearence": false,
-    "quantity": 0,
-    "category":'rinonera',
-  },
-  {
-    "id": 5,
-    "name": "Bolsa organizadora de viaje",
-    "price": 5500,
-    "stock": 12,
-    "image": 'assets/img/bolsa.png',
-    "clearence": true,
-    "quantity": 0,
-    "category":'bolsas',
-  },
-  {
-    "id":8,
-    "name": "Enterprise",
-    "price": 4000,
-    "stock": 3,
-    "image": "assets/img/mochila.webp",
-    "clearence": true,
-    "quantity": 0,
-    "category":'mochilas',
-  },
-
-];
 
 
 

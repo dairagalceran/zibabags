@@ -1,5 +1,5 @@
 
-<section class="h-100" style="background-color: #eee;">
+<section class="h-100">
   <div class="container h-100 py-5">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-10">
@@ -55,10 +55,10 @@
                 <p class="lead fw-normal mb-2"> <strong>Total:</strong></p>
               </div>
               <div class="col-md-3 col-lg-3 col-xl-3">
-                <p class="lead fw-normal mb-2"> <strong>{{"$50000" | uppercase}}</strong></p>
+                <p class="lead fw-normal mb-2"> <strong>{{ (total$ | async) | currency}}</strong></p>
               </div>
               <div  class="col-md-3 col-lg-3 col-xl-3">
-                <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-secondary btn-lg ms-3" routerLink="/">Continuar comprando</button>
+                <button  type="button" class="btn btn-outline-secondary btn-lg ms-3" routerLink="/">Continuar comprando</button>
                 </div>
             </div>
           </div>

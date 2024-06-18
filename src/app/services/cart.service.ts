@@ -27,8 +27,6 @@ export class CartService {
 
     private _shopList: Item[] = [];
     shopList: BehaviorSubject<Item[]> = new BehaviorSubject<Item[]>([]);
-    product:Item;                                                     //  product variable del Service
-    total:number=0;
 
     constructor() { }
 
@@ -40,20 +38,30 @@ export class CartService {
       else{
         product.quantity += item.quantity;
       }
-      this.shopList.next(this._shopList);     //Emite cambio con "next(variablePrivada)"
-                                              //se le indica al BehavourSubject que actualice el valor de la variable privada
+      this.shopList.next(this._shopList);     //Emite cambio con "next(variablePrivada)" se le indica al BehavourSubject que actualice el valor de la variable privada
     }
 
     deleteItemOfCart(item: Item){
       let product = this._shopList.find(x => x.id == item.id);
       if(product){
-        // Emitir el stock actualizado
+        // Emitir el stock actualizado pero recibe el stock original no el valor del stock en bag-items
         item.stock += item.quantity;
+        //console.log("item.stock en delete"+item.stock , +" id "+item.id);
+
+        this._shopList = this._shopList.filter(x => x.id != item.id);
+        this.shopList.next(this._shopList); //Emitir cambio
+      //}
+      }
+    }
+
+    updateStock(item: Item){
+      let product = this._shopList.find(x => x.id == item.id);
+      if(product){
+        item.stock += product.quantity;
         this._shopList = this._shopList.filter(x => x.id != item.id);
         this.shopList.next(this._shopList); //Emitir cambio
       }
-
     }
-
-
 }
+
+

@@ -14,6 +14,7 @@ import { InputIntegerComponent } from './components/input-integer/input-integer.
 import { CartComponent } from './components/cart/cart.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { TotalByItemComponent } from './components/total-by-item/total-by-item.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { TotalByItemComponent } from './components/total-by-item/total-by-item.c
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [
     provideClientHydration()
