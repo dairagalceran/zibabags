@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Item } from '../../models/Item';
 import { CartService } from '../../services/cart.service';
 import { ProductsDataService } from '../../services/products-data.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-rucksack-items',
@@ -11,7 +12,7 @@ import { ProductsDataService } from '../../services/products-data.service';
 
 export class RucksackItemsComponent {
 
-  productItems: Item[] = [];
+  productItems$: Observable<Item[]>;
 
 
   constructor(
@@ -23,8 +24,10 @@ export class RucksackItemsComponent {
   //aparece en pantalla o se va o hay cambios
 
   ngOnInit():void {
-    this.productsDataService.getAll()
-        .subscribe(productsData => this.productItems = productsData);
+    this.productItems$ = this.productsDataService.productList.asObservable(); //productItems$ siempre tendrá  los datos más actualizados.
+
+   // this.productsDataService.getAll()
+    //    .subscribe(productsData => this.productItems = productsData);
                       //se puede siempre obtener el valor que está
                       //emitiendo con una función arrow
                       //DESUBSCRIBIR para no ocupar memoria

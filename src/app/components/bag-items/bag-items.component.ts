@@ -12,10 +12,9 @@ import { ProductsDataService } from '../../services/products-data.service';
 
 
 export class BagItemsComponent implements OnInit{
-
   product: Item;
   cartList$: Observable<Item[]>;
-  productItems: Item[] =[];
+  productItems$: Observable<Item[]>;
 
   // se recibe por parámetro  y al reconocer que necesita un cartService y
   // decide si lo crea por ser la primera vez
@@ -29,8 +28,7 @@ export class BagItemsComponent implements OnInit{
 
   ngOnInit(){
     this.cartList$ = this.cartService.shopList.asObservable();
-    this.productsDataService.getAll()
-          .subscribe(productsData => this.productItems = productsData);
+    this.productItems$ = this.productsDataService.productList.asObservable(); //productItems$ siempre tendrá  los datos más actualizados.
 
   }
 
@@ -42,15 +40,6 @@ export class BagItemsComponent implements OnInit{
     item.stock -= item.quantity;
     item.quantity =0;
   }
-
-//no se utiliza
-  updateStock(item : Item){
-    let product = this.productItems.find(x =>  x.id == item.id);
-      if(product){
-        this.product.stock += item.quantity;
-      }
-    }
-
 
 
 }

@@ -15,24 +15,26 @@ export class CategoriesComponent {
     "id":1,
     "name": "Bolsas",
     "image": "../../../assets/img/bolsa.png",
-    "clearence": true,
+    "sale": true,
     "router": 'bolsas',
+    "discount": 15,
   },
   {
     "id":  0,
     "name": "Mochilas",
     "image": '../../assets/img/mochila.webp',
-    "clearence": false,
+    "sale": false,
     "router": 'mochilas',
+    "discount": 0,
 
   },
   {
     "id": 3,
     "name": "Riñoneras",
     "image": '../../../assets/img/rinonera.png',
-    "clearence": false,
+    "sale": false,
     "router": 'rinoneras',
-
+    "discount": 0,
   }
 ];
 

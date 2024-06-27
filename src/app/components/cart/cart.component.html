@@ -2,22 +2,25 @@
     <h3>Tu selección ...</h3>
 </div>
 
-<div>
+<div >
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let item of cartList$ | async"> <!-- cartList propiedad  del  componente que esta aislasda
                                                                   pero nos subscribimos al servicio para ir actualizandola  -->
-      <div class=" align-items-center">
-        <h6>{{item.name}} </h6>
-        <p>Cantidad: {{item.quantity}}</p>
-        <p class="fw-bold mb-0 me-5 pe-3">${{item.price}} c/u.</p>
-        <div class="def-number-input number-input safari_only">
-          <button class="btn  btn-sm mt-3" (click)="deleteItemOfCart(item)"><img src="assets/img/basura-48.png" alt=""> </button>
+      <div class="row">
+        <div class="col-6">
+          <img width="50"
+            [src]="item.image"
+            class="img-fluid rounded-3" [alt]="item.name" >
+          <h6>{{item.name}} </h6>
+          <p>Cantidad: {{item.quantity}}</p>
         </div>
+
+      <div class="col-6">
+        <p class="fw-bold mb-0 mt-2 pe-3">${{item.price}} c/u.</p>
+        <button class="btn  btn-sm mt-3" (click)="deleteItemOfCart(item)"><img  src="assets/img/basura-48.png" alt=""> </button>
       </div>
+    </div >
     </li>
-
   </ul>
-
-
 </div>
 

@@ -11,10 +11,10 @@
               <img  [src]="categoria.image" [alt]="categoria.name"  >
             <h4 routerLink="/{{categoria.router}}" class="p-2"
             > {{categoria.name | uppercase}}</h4>
-            @if(categoria.clearence){
+            @if(categoria.sale){
               <h6 class="p-2"
-              [ngClass]="{'clearence': categoria.clearence, }"
-            >Descuentos hasta 20%</h6>
+              [ngClass]="{'sale': categoria.sale, }"
+            >Descuentos hasta {{categoria.discount}}%</h6>
             }
 
           </div>
@@ -33,7 +33,7 @@
     <td *ngIf="categoria.stock == 0" > SIN STOCK </td>
 
     DIRECTIVAS ATRIBUTO
-    [ngClass]="{'clearence': categoria.clearence}"  maneja las clases CSS sepuede agregar o sacar una clase
+    [ngClass]="{'sale': categoria.sale}"  maneja las clases CSS sepuede agregar o sacar una clase
       esta se  arma  objeto JSON {'nombrePropiedad' : nombreClase.claseCSSAAplicar}
 
     PIPE

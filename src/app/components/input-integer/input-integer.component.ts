@@ -33,18 +33,17 @@ export class InputIntegerComponent {
     }
   }
 
-  changeQuantity(event): void {
-    if(event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode ==8 ){
-      if(this.maxQuantity>= this.quantity){
-        this.quantityChange.emit(this.quantity);
-      }else{
-          this.quantity=0;
-        }
-    }else{
-      console.log("Solo números");
-      this.quantity=0;
 
+  changeQuantity($event): void {
+    const newQuantity = parseInt($event.target.value, 10);
+    if (newQuantity < 0 || isNaN(newQuantity)) {
+      this.quantity = 0;
+    } else if (newQuantity > this.maxQuantity) {
+      this.quantity = this.maxQuantity;
+    } else {
+      this.quantity = newQuantity;
     }
+    this.quantityChange.emit(this.quantity);
   }
 }
 

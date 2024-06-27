@@ -32,7 +32,7 @@ export class CartComponent implements OnInit{
   deleteItemOfCart(item: Item){
     if(item){
       this.cartService.deleteItemOfCart(item);
-      this.cartService.updateStock(item);
+      //this.cartService.updateStock(item, number);
     }
   }
 

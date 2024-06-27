@@ -1,7 +1,7 @@
 <div class="title">
   <h3>Una mochila para cada situación</h3>
 </div>
-<div>
+<div *ngIf="productItems$ |async as productItems">
   <ng-container *ngFor="let item of productItems" >
   @if(item.category == "mochilas"){
     <div class="card mb-3">
@@ -13,11 +13,11 @@
                 [src]="item.image"
                 class="img-fluid rounded-3" [alt]="item.name" >
             </div>
-            <div class="ms-5" [ngClass]="{'clearence': item.clearence}">
+            <div class="ms-5" [ngClass]="{'sale': item.sale}">
               <h5>{{item.name | uppercase}}</h5>
-                <p *ngIf="item.clearence"  class="text-decoration-line-through">${{item.price | currency}}</p>
-                <h6 *ngIf="!item.clearence" class="small mb-0"><strong>${{item.price |currency}}</strong></h6>
-              <h5 *ngIf="item.clearence">Oferta de la semana</h5>
+                <p *ngIf="item.sale"  class="text-decoration-line-through">${{item.price | currency}}</p>
+                <h6 *ngIf="!item.sale" class="small mb-0"><strong>{{item.price |currency}}</strong></h6>
+              <h5 *ngIf="item.sale">Oferta de la semana</h5>
             </div>
           </div>
           <div class="d-flex flex-row align-items-center">
