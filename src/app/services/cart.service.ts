@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Item } from '../models/Item';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { ProductsDataService } from './products-data.service';
 
 /**
  * Maneja la LÓGICA del carrito
@@ -12,52 +13,61 @@ import { BehaviorSubject } from 'rxjs';
 })
 
 
-/**
- * Acá se agregan métodos y funciones que se
- * necesiten y se van a utilizar desde los componentes que lo necesiten
- */
+
 export class CartService {
-  
+
     /**     se crea la variable con guión bajo a observar como privada
      *      encapsulamos la variable con BehaviorSubject() para
      *      suscribirse y notificar cambios.
      */
-
     private _shopList: Item[] = [];
-    shopList: BehaviorSubject<Item[]> = new BehaviorSubject<Item[]>([]);
+    shopList: BehaviorSubject<Item[]> = new BehaviorSubject<Item[]>(this._shopList);
 
-    constructor() { }
+    constructor(private productDataService: ProductsDataService) { }
 
-    addItemToCart(item: Item) {
-      let product = this._shopList.find(x => x.name == item.name);
+    addItemToCart(item: Item):void {
+      let product:Item |undefined = this._shopList.find(x => x.id == item.id);
       if(!product){
-        this._shopList.unshift({...item});     //clona el item que se va a agregar a la lista. Permite modificar los valores de las variables al clonar
+        const addItem = {...item, price: this.getPrice(item)};
+        this._shopList.unshift(addItem);
       }
       else{
         product.quantity += item.quantity;
+        product.price =   this.getPrice(item);
+
       }
-      this.shopList.next(this._shopList);     //Emite cambio con "next(variablePrivada)" se le indica al BehavourSubject que actualice el valor de la variable privada
+      this.shopList.next(this._shopList);
     }
 
-    deleteItemOfCart(item: Item){
+    deleteItemOfCart(item: Item):void{
+      let stockToRestore : number = 0;
       let product = this._shopList.find(x => x.id == item.id);
       if(product){
-        // Emitir el stock actualizado pero recibe el stock original no el valor del stock en bag-items
-        item.stock += item.quantity;
-        this._shopList = this._shopList.filter(x => x.id != item.id);
-        this.shopList.next(this._shopList); //Emitir cambio
-      //}
-      }
-    }
-
-    updateStock(item: Item){
-      let product = this._shopList.find(x => x.id == item.id);
-      if(product){
-        item.stock += product.quantity;
+        product.stock -= item.quantity;
+        stockToRestore = item.quantity;
         this._shopList = this._shopList.filter(x => x.id != item.id);
         this.shopList.next(this._shopList); //Emitir cambio
       }
+      this.updateStock(item, stockToRestore);
     }
+
+    updateStock(item: Item, stockToRestore: number):void{
+      this.productDataService.updateStock(item, stockToRestore);
+    }
+
+    getPrice(item: Item): number{
+     return item.sale ? item.price * (1 - item.discount) : item.price;
+    }
+
+
+    payCart(items: Item[]){
+      return this.productDataService.updateStockBeforePay(items);
+    }
+
+    clearCartHtml(){
+      this._shopList = [];
+      this.shopList.next(this._shopList);
+    }
+
 }
-
 
