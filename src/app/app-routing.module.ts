@@ -5,6 +5,7 @@ import { BagItemsComponent } from './components/bag-items/bag-items.component';
 import { BagsLayoutComponent } from './components/bags-layout/bags-layout.component';
 import { RucksacksLayoutComponent } from './components/rucksacks-layout/rucksacks-layout.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { SuccessBuyComponent } from './components/success-buy/success-buy.component';
 
 const routes: Routes = [
 
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path:'shopping-cart',
     component: ShoppingCartComponent,
+  },
+  {
+    path:'success-buy',
+    component: SuccessBuyComponent,
   },
 ];
 

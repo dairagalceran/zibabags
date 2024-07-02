@@ -7,17 +7,19 @@
     <div class="col-12">
       <div class="row">
         <ng-container *ngFor="let categoria of categorias">
+
           <div class="card col-md-3 mt-2 me-4 bb-5">
+            <a routerLink="/{{categoria.router}}">
               <img  [src]="categoria.image" [alt]="categoria.name"  >
-            <h4 routerLink="/{{categoria.router}}" class="p-2"
-            > {{categoria.name | uppercase}}</h4>
+              <h4  class="p-2" > {{categoria.name | uppercase}}</h4>
             @if(categoria.sale){
               <h6 class="p-2"
               [ngClass]="{'sale': categoria.sale, }"
             >Descuentos hasta {{categoria.discount}}%</h6>
             }
-
+            </a>
           </div>
+
         </ng-container>
     </div>
 

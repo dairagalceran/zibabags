@@ -14,7 +14,7 @@ import { ProductsDataService } from '../../services/products-data.service';
 export class BagItemsComponent implements OnInit{
   product: Item;
   cartList$: Observable<Item[]>;
-  productItems$: Observable<Item[]>;
+  productItems$: Observable<Item[]>; //para recibir actualizaciones en la lista de productos
 
   // se recibe por parámetro  y al reconocer que necesita un cartService y
   // decide si lo crea por ser la primera vez
@@ -28,7 +28,7 @@ export class BagItemsComponent implements OnInit{
 
   ngOnInit(){
     this.cartList$ = this.cartService.shopList.asObservable();
-    this.productItems$ = this.productsDataService.productList.asObservable(); //productItems$ siempre tendrá  los datos más actualizados.
+    this.productItems$ = this.productsDataService.productList.asObservable(); //productItems$ siempre tendrá  los datos  actualizados.
 
   }
 

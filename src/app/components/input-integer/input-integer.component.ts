@@ -20,14 +20,14 @@ export class InputIntegerComponent {
 
 
   increaseQuantity(): void{
-    if(this.maxQuantity> this.quantity){
+    if(this.maxQuantity > this.quantity){
       this.quantity++;
       this.quantityChange.emit(this.quantity);
     }
   }
 
   decreseQuantity(): void{
-    if(this.quantity>0 || this.maxQuantity<this.quantity){
+    if(this.quantity > 0 ){
       this.quantity--;
       this.quantityChange.emit(this.quantity);
     }

@@ -15,6 +15,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { TotalByItemComponent } from './components/total-by-item/total-by-item.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SuccessBuyComponent } from './components/success-buy/success-buy.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     InputIntegerComponent,
     ShoppingCartComponent,
     TotalByItemComponent,
+    SuccessBuyComponent,
   ],
   imports: [
     BrowserModule,
