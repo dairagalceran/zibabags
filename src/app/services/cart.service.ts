@@ -60,15 +60,14 @@ export class CartService {
     }
 
 
-  payCart(items: Item[]){
-    console.log(" dentro de payCart ")
-    return this.productDataService.updateStockBeforePay(items);
-  }
+    payCart(items: Item[]){
+      return this.productDataService.updateStockBeforePay(items);
+    }
 
-  clearCartHtml(){
-    this._shopList = [];
-    this.shopList.next(this._shopList);
-  }
+    clearCartHtml(){
+      this._shopList = [];
+      this.shopList.next(this._shopList);
+    }
 
 }
 

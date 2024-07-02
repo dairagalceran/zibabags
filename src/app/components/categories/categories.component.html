@@ -6,16 +6,16 @@
   <div class="container">
     <div class="col-12">
       <div class="row">
-        <ng-container *ngFor="let categoria of categorias">
+        <ng-container *ngFor="let category of categoriesList$ |async">
 
           <div class="card col-md-3 mt-2 me-4 bb-5">
-            <a routerLink="/{{categoria.router}}">
-              <img  [src]="categoria.image" [alt]="categoria.name"  >
-              <h4  class="p-2" > {{categoria.name | uppercase}}</h4>
-            @if(categoria.sale){
+            <a routerLink="/{{category.router}}">
+              <img  [src]="category.image" [alt]="category.name"  >
+              <h4  class="p-2" > {{category.name | uppercase}}</h4>
+            @if(category.sale){
               <h6 class="p-2"
-              [ngClass]="{'sale': categoria.sale, }"
-            >Descuentos hasta {{categoria.discount}}%</h6>
+              [ngClass]="{'sale': category.sale, }"
+            >Descuentos hasta {{category.discount}}%</h6>
             }
             </a>
           </div>

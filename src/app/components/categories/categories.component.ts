@@ -1,42 +1,25 @@
-import { Component } from '@angular/core';
-import { Categoria } from '../../models/Categoria';
+import { Component, OnInit } from '@angular/core';
+import { Category } from '../../models/Category';
+import { Observable } from 'rxjs';
+import { CategoriesDataTsService } from '../../services/categories-data.ts.service';
 
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
-  styleUrl: './categories.component.scss'
+  styleUrls: ['./categories.component.scss']
 })
-export class CategoriesComponent {
+export class CategoriesComponent implements OnInit{
+
+  categoriesList$ : Observable<Category[]>;
+
+  constructor(private categoriesDataTsService: CategoriesDataTsService){}
 
 
-  //MOCK utilizado para probar el front end hasta que los datos se traigan de una API
-  categorias: Categoria[] = [
-    {
-    "id":1,
-    "name": "Bolsas",
-    "image": "../../../assets/img/bolsa.png",
-    "sale": true,
-    "router": 'bolsas',
-    "discount": 15,
-  },
-  {
-    "id":  0,
-    "name": "Mochilas",
-    "image": '../../assets/img/mochila.webp',
-    "sale": false,
-    "router": 'mochilas',
-    "discount": 0,
+  ngOnInit(): void {
+    this.categoriesList$ = this.categoriesDataTsService.categoriesList.asObservable();
 
-  },
-  {
-    "id": 3,
-    "name": "Riñoneras",
-    "image": '../../../assets/img/rinonera.png',
-    "sale": false,
-    "router": 'rinoneras',
-    "discount": 0,
   }
-];
+
 
 
 }
