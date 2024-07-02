@@ -53,7 +53,6 @@ export class ProductsDataService {
       };
       return this.http.put<Item>(`${API_URL}/${item.id}`, updateItem );
     });
-    console.log("put");
     return forkJoin(updateRequests);
   }
 
