@@ -19,13 +19,12 @@
               <div class="flex align-items-center ">
                 @if(item.sale == true){
                   <p  class="text-decoration-line-through text-start mb-0 ">{{item.price |currency}}</p>
-                  <p  class="discount text-start mb-0">SALE {{item.discount*100}}%</p>
+                  <p  class="discount text-start mb-0 resaltar">SALE {{item.discount*100}}%</p>
                   <h4 class="small text-start mt-0 mb-4"><strong>{{(item.price * (1-item.discount)) | currency}} </strong></h4>
                 }
                 @else {
                   <h4  class="small text-start mt-0 mb-0"><strong>{{item.price |currency}}</strong></h4>
                 }
-
               </div>
 
               <h5 *ngIf="item.sale" [ngClass]="{'sale': item.sale}">Oferta de la semana</h5>
