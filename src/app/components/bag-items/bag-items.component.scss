@@ -1,22 +1,20 @@
-.sale{
-  background: rgb(169, 238, 238);
-  border-width: 4px;
-  width: 200px;
+h1{
+  color:rgb(28, 28, 120);
+}
+
+.clearence{
+  background: rgb(195, 231, 231);
 }
 
 .resaltar{
   color: rgb(94, 59, 78);
 }
 
-h3, h5, .title, p{
-  text-align: center;
+td, th{
+  vertical-align: middle;
+  height: 90px;
 }
 
-.title{
-  text-align: center;
-  padding: 10px;
-}
-
-.discount{
-  color: rgb(47, 226, 116);
+input{
+  max-width: 40px;
 }

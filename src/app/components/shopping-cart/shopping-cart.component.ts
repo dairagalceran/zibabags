@@ -44,7 +44,6 @@ export class ShoppingCartComponent implements OnInit{
   payShopCart(items: Item[]){
     this.cartService.payCart(items).subscribe(
       response => {
-        console.log('Pago realizado y stock actualizado correctamente', response);
         this.clearCartHtml();
       },
       error => {
